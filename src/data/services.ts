@@ -17,7 +17,7 @@ export const services: Service[] = [
     image: ServiceOneImage,
   },
   {
-    title: "Ramo Petrolifero",
+    title: "Ramo Petrolífero",
     description:
       "Execução de obras públicas com rigor técnico, cumprindo prazos e especificações contratuais com total conformidade.",
     image: ServiceTwoImage,
