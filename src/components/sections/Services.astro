@@ -1,27 +1,53 @@
 ---
-import { services } from '../../data/services';
+import { services } from "@/data/services";
+import { Image } from "astro:assets";
 ---
 
-<section class="py-16 md:py-24 bg-gray-50" id="servicos">
-  <div class="mx-auto max-w-7xl px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-      Os Nossos Serviços
-    </h2>
+<section class="w-full bg-primary/5 py-16 md:py-24" id="servicos">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="flex flex-col gap-6 mb-12">
+      <span
+        class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
+      >
+        Os Nossos Serviços
+      </span>
+      <h2 class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up">
+        Soluções Completas Em Construção Civil
+      </h2>
+      <p
+        class="text-base md:text-lg text-foreground/70 max-w-2xl scroll-fade-up"
+      >
+        Oferecemos uma gama completa de serviços de construção. A nossa equipa
+        de profissionais qualificados está preparada para lidar com qualquer
+        tarefa, desde reparações urgentes a renovações completas, fornecendo
+        sempre soluções fiáveis e de alta qualidade.
+      </p>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {services.map((service) => (
-        <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
-          <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4">
-            <span class="text-xl">🏗️</span>
+    <!-- Cards -->
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-6">
+      {
+        services.map((service) => (
+          <div class="bg-white rounded-2xl overflow-hidden shadow-sm scroll-fade-up">
+            <div class="aspect-4/3 w-full bg-gray-200">
+              {service.image && (
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  class="object-cover w-full h-full"
+                />
+              )}
+            </div>
+            <div class="p-6 flex flex-col gap-3">
+              <h3 class="text-xl font-bold text-foreground">{service.title}</h3>
+              <p class="text-sm text-foreground/70 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
           </div>
-          <h3 class="text-xl font-semibold text-primary mb-3">
-            {service.title}
-          </h3>
-          <p class="text-gray-600 leading-relaxed">
-            {service.description}
-          </p>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
