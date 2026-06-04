@@ -5,33 +5,23 @@ export interface FAQ {
 
 export const faqItems: FAQ[] = [
   {
-    question: "Quanto tempo leva um projeto de construção típico?",
+    question: "Que Tipos De Obras Realiza A Alpiconstrói?",
     answer:
-      "O tempo varia consoante a complexidade e dimensão do projeto. Desde uma remodelação simples (2-4 semanas) até construções maiores (6-12 meses). Durante a consultoria inicial, forneceremos um cronograma detalhado.",
+      "A Alpiconstrói realiza obras residenciais (moradias urbanas e campestres, lazer, desporto), comerciais, industriais (fábricas, escritórios), obras públicas e infraestruturas, bem como trabalhos de requalificação e renovação de espaços existentes, incluindo carpintaria e serralharia.",
   },
   {
-    question: "Como funcionam os orçamentos?",
+    question: "Como Determina A Alpiconstrói O Preço Dos Projectos?",
     answer:
-      "Fornecemos orçamentos detalhados e sem compromisso após análise do projeto. Incluem materiais, mão de obra e prazos. Não há custos ocultos — tudo é transparente.",
+      "Oferecemos preços competitivos sem comprometer a qualidade do serviço. O orçamento é elaborado após análise detalhada das especificações do projecto. Podemos ajustar os pacotes de serviço ao seu orçamento, garantindo sempre a melhor relação qualidade-preço.",
   },
   {
-    question: "Garantem a qualidade do trabalho?",
+    question: "Os Técnicos Da Alpiconstrói São Licenciados E Segurados?",
     answer:
-      "Sim! Utilizamos materiais de primeira qualidade e profissionais qualificados. Oferecemos garantia nos serviços e materiais, conforme acordado no contrato.",
+      "Sim. Todos os nossos técnicos são devidamente qualificados — Engenheiros, Arquitectos, Encarregados e profissionais especializados — e a empresa encontra-se regularmente inscrita e segurada, trabalhando com total conformidade com as normas legais em vigor.",
   },
   {
-    question: "Posso acompanhar o progresso do meu projeto?",
+    question: "Com Que Rapidez A Alpiconstrói Responde A Pedidos Urgentes?",
     answer:
-      "Claro! Mantemos comunicação regular com o cliente através de relatórios semanais, fotos de progresso e reuniões. Pode visitar a obra sempre que desejar.",
-  },
-  {
-    question: "Trabalham com licenças e autorizações?",
-    answer:
-      "Sim, gerimos todas as licenças, autorizações e cumprimento de regulamentos. Asseguramos que o projeto está em conformidade com a legislação local.",
-  },
-  {
-    question: "Como posso solicitar um orçamento?",
-    answer:
-      "Pode entrar em contacto connosco através do formulário no site, telefonar ou enviar um email com detalhes do seu projeto. Agendar uma visita ao local é o primeiro passo.",
+      "Entendemos que algumas situações requerem atenção imediata. A nossa equipa está disponível para responder rapidamente a pedidos urgentes. Contacte-nos directamente pelo telefone ou email e garantimos uma resposta no menor tempo possível.",
   },
 ];

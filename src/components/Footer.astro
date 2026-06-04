@@ -1,62 +1,61 @@
 ---
+import Logo from "@/assets/img/alpi-constroi-logo.webp";
+import { Image } from "astro:assets";
+
+const linkClass =
+  "text-sm text-foreground/70 underline underline-offset-2 hover:text-foreground transition-colors";
+const year = new Date().getFullYear();
 ---
 
-<footer class="bg-primary text-white py-12">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <!-- Brand -->
-      <div>
-        <h3 class="text-xl font-bold mb-4">Alpi Constroi</h3>
-        <p class="text-gray-300">
-          Construção civil e remodelação de qualidade em Portugal desde 2000.
+<footer class="bg-white border-t border-gray-200">
+  <div class="container mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <!-- Col 1: Logo + tagline -->
+      <div class="flex flex-col gap-4">
+        <Image
+          src={Logo}
+          alt="Alpiconstrói"
+          class="h-16 w-auto object-contain object-left"
+        />
+        <p class="text-sm text-foreground/70 leading-relaxed">
+          A sua parceira de confiança em Construção Civil e Obras Públicas em
+          Angola, desde 2007. Construindo o Futuro, Hoje!
         </p>
       </div>
 
-      <!-- Links -->
-      <div>
-        <h4 class="font-semibold mb-4">Navegação</h4>
-        <ul class="space-y-2 text-gray-300">
-          <li>
-            <a href="#servicos" class="hover:text-white transition"
-              >Serviços</a
-            >
-          </li>
-          <li>
-            <a href="#sobre" class="hover:text-white transition">Sobre Nós</a>
-          </li>
-          <li>
-            <a href="#projetos" class="hover:text-white transition">Projetos</a>
-          </li>
-          <li>
-            <a href="#contacto" class="hover:text-white transition"
-              >Contacto</a
-            >
-          </li>
+      <!-- Col 2: Empresa -->
+      <div class="flex flex-col gap-4">
+        <p class="font-semibold text-foreground">Empresa</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#sobre" class={linkClass}>Sobre nós</a></li>
+          <li><a href="#servicos" class={linkClass}>Serviços</a></li>
+          <li><a href="#projetos" class={linkClass}>Realizações</a></li>
+          <li><a href="#diferenciais" class={linkClass}>Diferenciais</a></li>
         </ul>
       </div>
 
-      <!-- Contact -->
-      <div>
-        <h4 class="font-semibold mb-4">Contacto</h4>
-        <ul class="space-y-2 text-gray-300">
-          <li>
-            <a href="tel:+351212345678" class="hover:text-white transition"
-              >+351 21 234 5678</a
-            >
-          </li>
-          <li>
-            <a
-              href="mailto:info@alpiconstroi.pt"
-              class="hover:text-white transition">info@alpiconstroi.pt</a
-            >
-          </li>
-          <li>Rua das Flores, 123 — Lisboa, Portugal</li>
+      <!-- Col 3: Utilitários -->
+      <div class="flex flex-col gap-4">
+        <p class="font-semibold text-foreground">Utilitários</p>
+        <ul class="flex flex-col gap-3">
+          <li><a href="#contacto" class={linkClass}>Contactos</a></li>
+          <li><a href="#faq" class={linkClass}>FAQ</a></li>
         </ul>
       </div>
     </div>
+  </div>
 
-    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-      <p>&copy; 2025 Alpi Constroi. Todos os direitos reservados.</p>
+  <!-- Bottom bar -->
+  <div class="border-t border-gray-200">
+    <div class="container mx-auto px-6 py-6">
+      <p class="text-sm text-foreground/60">
+        &copy; {year} Alpiconstrói Constrói, Lda. Todos os direitos reservados.
+        Feito Pela <a
+          href="#"
+          class="underline underline-offset-2 hover:text-foreground transition-colors"
+          >Bit & Brush</a
+        >.
+      </p>
     </div>
   </div>
 </footer>

@@ -1,70 +1,33 @@
 ---
-import { faqItems } from '../../data/faq';
+import { faqItems } from "@/data/faq";
 ---
 
-<section class="py-16 md:py-24 bg-white" id="faq">
-  <div class="mx-auto max-w-3xl px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-      Perguntas Frequentes
-    </h2>
+<section class="w-full bg-white py-16 md:py-24" id="faq">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="flex flex-col gap-6 mb-12">
+      <span
+        class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
+      >
+        FAQ
+      </span>
+      <h2 class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up">
+        Perguntas Frequentes
+      </h2>
+    </div>
 
-    <div class="space-y-4">
-      {faqItems.map((item, index) => (
-        <div class="border border-gray-200 rounded-lg overflow-hidden">
-          <button
-            class="faq-button w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition"
-            data-index={index}
-            aria-expanded="false"
-          >
-            <h3 class="font-semibold text-primary text-left">{item.question}</h3>
-            <span class="text-primary text-xl flex-shrink-0 ml-4">+</span>
-          </button>
-
-          <div
-            class="faq-answer hidden px-6 pb-4 text-gray-600 border-t border-gray-200 bg-gray-50"
-            data-index={index}
-          >
-            <p class="leading-relaxed">{item.answer}</p>
+    <!-- Items -->
+    <div class="flex flex-col">
+      {
+        faqItems.map((item, index) => (
+          <div class="border-t border-gray-200 py-8 scroll-fade-up">
+            <h3 class="text-lg md:text-xl font-bold text-foreground mb-3">
+              {index + 1}. {item.question}
+            </h3>
+            <p class="text-foreground/70 leading-relaxed">{item.answer}</p>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
-
-<script>
-  document.querySelectorAll('.faq-button').forEach((button) => {
-    button.addEventListener('click', () => {
-      const index = button.getAttribute('data-index');
-      const answer = document.querySelector(
-        `.faq-answer[data-index="${index}"]`
-      );
-      const isOpen = !answer?.classList.contains('hidden');
-
-      button.setAttribute('aria-expanded', String(!isOpen));
-      answer?.classList.toggle('hidden');
-
-      const icon = button.querySelector('span');
-      if (icon) {
-        icon.textContent = isOpen ? '+' : '−';
-      }
-
-      // Close other accordion items
-      document.querySelectorAll('.faq-answer').forEach((otherAnswer) => {
-        if (otherAnswer.getAttribute('data-index') !== index) {
-          otherAnswer.classList.add('hidden');
-        }
-      });
-
-      document.querySelectorAll('.faq-button').forEach((otherButton) => {
-        if (otherButton.getAttribute('data-index') !== index) {
-          const icon = otherButton.querySelector('span');
-          if (icon) {
-            icon.textContent = '+';
-          }
-          otherButton.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-  });
-</script>
