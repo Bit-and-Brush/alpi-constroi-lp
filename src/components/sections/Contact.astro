@@ -1,131 +1,229 @@
 ---
 ---
 
-<section class="py-16 md:py-24 bg-gray-50" id="contacto">
-  <div class="mx-auto max-w-7xl px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-      Entre em Contacto
-    </h2>
+<section class="w-full bg-white py-16 md:py-24" id="contacto">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <!-- Contact Info -->
-      <div>
-        <h3 class="text-xl font-semibold text-primary mb-6">
-          Informações de Contacto
-        </h3>
-
-        <div class="space-y-6">
-          <div class="flex gap-4">
-            <div class="text-accent text-2xl">📞</div>
-            <div>
-              <p class="font-semibold text-primary">Telefone</p>
-              <a href="tel:+351212345678" class="text-gray-600 hover:text-primary transition">
-                +351 21 234 5678
-              </a>
-            </div>
-          </div>
-
-          <div class="flex gap-4">
-            <div class="text-accent text-2xl">✉️</div>
-            <div>
-              <p class="font-semibold text-primary">Email</p>
-              <a href="mailto:info@alpiconstroi.pt" class="text-gray-600 hover:text-primary transition">
-                info@alpiconstroi.pt
-              </a>
-            </div>
-          </div>
-
-          <div class="flex gap-4">
-            <div class="text-accent text-2xl">📍</div>
-            <div>
-              <p class="font-semibold text-primary">Endereço</p>
-              <p class="text-gray-600">
-                Rua das Flores, 123<br />
-                1100-000 Lisboa, Portugal
-              </p>
-            </div>
-          </div>
-
-          <div class="flex gap-4">
-            <div class="text-accent text-2xl">🕒</div>
-            <div>
-              <p class="font-semibold text-primary">Horário</p>
-              <p class="text-gray-600">
-                Segunda a Sexta: 08:00 - 18:00<br />
-                Sábado: 09:00 - 13:00<br />
-                Domingo: Fechado
-              </p>
-            </div>
-          </div>
+      <!-- Left: info -->
+      <div class="flex flex-col gap-6">
+        <span class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up">
+          Contacte-Nos
+        </span>
+        <h2 class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up">
+          Fale Connosco
+        </h2>
+        <p class="text-base md:text-lg text-foreground/80 leading-relaxed scroll-fade-up">
+          Se deseja iniciar um projecto de construção ou melhoria, ou precisa de
+          assistência para uma obra, a nossa equipa de profissionais qualificados
+          está pronta para tratar de tudo por si. Contacte a Alpiconstrói hoje e
+          experiencie serviço de excelência.
+        </p>
+        <div class="flex flex-col gap-2 mt-4 scroll-fade-up">
+          <p class="text-foreground/80">
+            <span class="font-bold text-foreground">EMAIL:</span> geral@alpiconstroi.com
+          </p>
+          <p class="text-foreground/80">
+            <span class="font-bold text-foreground">TELEFONE:</span> 222 732 222
+          </p>
+          <p class="text-foreground/80">
+            <span class="font-bold text-foreground">MORADA:</span> Avenida do PIV, polo industrial de Viana, Viana – Luanda, Angola
+          </p>
+          <p class="text-foreground/80">
+            <span class="font-bold text-foreground">HORÁRIO:</span> Seg – Sex: 8h00 – 18h00
+          </p>
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <div>
-        <form class="space-y-4 bg-white p-8 rounded-lg shadow-sm">
-          <div>
-            <label for="name" class="block text-sm font-medium text-primary mb-2">
-              Nome Completo
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-            />
+      <!-- Right: form -->
+      <form id="contact-form" class="flex flex-col gap-6" novalidate>
+        <div class="flex flex-col gap-1">
+          <label for="nome" class="text-sm font-bold text-foreground">Nome:</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="O seu nome completo"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
+          />
+          <span id="nome-error" class="text-red-500 text-xs hidden"></span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="email" class="text-sm font-bold text-foreground">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="me@mail.com"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
+          />
+          <span id="email-error" class="text-red-500 text-xs hidden"></span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="telefone" class="text-sm font-bold text-foreground">Telefone:</label>
+          <input
+            type="tel"
+            id="telefone"
+            name="telefone"
+            placeholder="O seu número de telefone"
+            maxlength="9"
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
+          />
+          <span id="telefone-error" class="text-red-500 text-xs hidden"></span>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="mensagem" class="text-sm font-bold text-foreground">Mensagem:</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            rows="4"
+            maxlength="300"
+            placeholder="A sua mensagem..."
+            class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors resize-none"
+          ></textarea>
+          <div class="flex justify-between items-center">
+            <span id="mensagem-error" class="text-red-500 text-xs hidden"></span>
+            <span id="mensagem-count" class="text-xs text-foreground/40 ml-auto">0/300</span>
           </div>
+        </div>
 
-          <div>
-            <label for="email" class="block text-sm font-medium text-primary mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-            />
-          </div>
+        <span id="form-feedback" class="text-sm hidden"></span>
 
-          <div>
-            <label for="phone" class="block text-sm font-medium text-primary mb-2">
-              Telefone
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
-            />
-          </div>
+        <button
+          type="submit"
+          class="bg-primary text-white font-semibold px-8 py-3 rounded-full uppercase tracking-widest hover:opacity-85 active:scale-95 transition-all self-end flex items-center gap-2"
+        >
+          <svg id="submit-spinner" class="hidden animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+          <span id="submit-label">ENVIAR MENSAGEM</span>
+        </button>
+      </form>
 
-          <div>
-            <label for="message" class="block text-sm font-medium text-primary mb-2">
-              Mensagem
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              required
-              rows="5"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent resize-none"
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full bg-accent hover:bg-yellow-600 text-primary font-semibold py-3 rounded-lg transition"
-          >
-            Enviar Mensagem
-          </button>
-
-          <p class="text-xs text-gray-500 text-center">
-            * Campo obrigatório
-          </p>
-        </form>
-      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import { submitContactForm } from "../../scripts/contact-form";
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const feedback = document.getElementById("form-feedback") as HTMLElement;
+
+  function sanitize(value: string): string {
+    return value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#x27;");
+  }
+
+  const mensagemEl = document.getElementById("mensagem") as HTMLTextAreaElement;
+  const mensagemCount = document.getElementById("mensagem-count") as HTMLElement;
+  mensagemEl.addEventListener("input", () => {
+    mensagemCount.textContent = `${mensagemEl.value.length}/300`;
+  });
+
+  function showError(id: string, msg: string) {
+    const el = document.getElementById(id) as HTMLElement;
+    el.textContent = msg;
+    el.classList.remove("hidden");
+  }
+
+  function clearError(id: string) {
+    const el = document.getElementById(id) as HTMLElement;
+    el.textContent = "";
+    el.classList.add("hidden");
+  }
+
+  ["nome", "email", "telefone", "mensagem"].forEach((field) => {
+    document.getElementById(field)?.addEventListener("input", () =>
+      clearError(`${field}-error`)
+    );
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    const nome = (document.getElementById("nome") as HTMLInputElement).value.trim();
+    const email = (document.getElementById("email") as HTMLInputElement).value.trim();
+    const telefone = (document.getElementById("telefone") as HTMLInputElement).value.trim();
+    const mensagem = (document.getElementById("mensagem") as HTMLTextAreaElement).value.trim();
+
+    if (!nome) {
+      showError("nome-error", "O nome é obrigatório.");
+      valid = false;
+    } else if (nome.length < 2) {
+      showError("nome-error", "O nome deve ter pelo menos 2 caracteres.");
+      valid = false;
+    } else {
+      clearError("nome-error");
+    }
+
+    if (!email) {
+      showError("email-error", "O email é obrigatório.");
+      valid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showError("email-error", "Introduza um email válido.");
+      valid = false;
+    } else {
+      clearError("email-error");
+    }
+
+    if (!telefone) {
+      showError("telefone-error", "O telefone é obrigatório.");
+      valid = false;
+    } else if (!/^(\+244\s?)?[29]\d{2}\s?\d{3}\s?\d{3}$/.test(telefone)) {
+      showError("telefone-error", "Introduza um número angolano válido (ex: 922 123 456).");
+      valid = false;
+    } else {
+      clearError("telefone-error");
+    }
+
+    if (!mensagem) {
+      showError("mensagem-error", "A mensagem é obrigatória.");
+      valid = false;
+    } else if (mensagem.length < 10) {
+      showError("mensagem-error", "A mensagem deve ter pelo menos 10 caracteres.");
+      valid = false;
+    } else {
+      clearError("mensagem-error");
+    }
+
+    if (!valid) return;
+
+    const btn = form.querySelector("button[type='submit']") as HTMLButtonElement;
+    const spinner = document.getElementById("submit-spinner") as HTMLElement;
+    const label = document.getElementById("submit-label") as HTMLElement;
+    btn.disabled = true;
+    spinner.classList.remove("hidden");
+    label.textContent = "A ENVIAR...";
+
+    const result = await submitContactForm({
+      name: sanitize(nome),
+      email: sanitize(email),
+      phone: sanitize(telefone),
+      message: sanitize(mensagem),
+    });
+
+    btn.disabled = false;
+    spinner.classList.add("hidden");
+    label.textContent = "ENVIAR MENSAGEM";
+    feedback.classList.remove("hidden");
+
+    if (result.success) {
+      feedback.textContent = "Mensagem enviada com sucesso! Entraremos em contacto em breve.";
+      feedback.className = "text-sm text-green-600";
+      form.reset();
+    } else {
+      feedback.textContent = result.error ?? "Ocorreu um erro. Tente novamente.";
+      feedback.className = "text-sm text-red-500";
+    }
+  });
+</script>
