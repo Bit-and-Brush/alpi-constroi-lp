@@ -1,0 +1,32 @@
+---
+import { testimonials } from '../../data/testimonials';
+---
+
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+      O Que Dizem Nossos Clientes
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow">
+          <div class="flex gap-1 mb-4">
+            {[...Array(testimonial.rating)].map(() => (
+              <span class="text-yellow-400">★</span>
+            ))}
+          </div>
+
+          <p class="text-gray-700 italic mb-6 leading-relaxed">
+            "{testimonial.quote}"
+          </p>
+
+          <div>
+            <p class="font-semibold text-primary">{testimonial.name}</p>
+            <p class="text-sm text-gray-600">{testimonial.company}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

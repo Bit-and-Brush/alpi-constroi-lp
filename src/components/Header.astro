@@ -1,0 +1,212 @@
+---
+import Image from "astro/components/Image.astro";
+import AlpiConstroiLogoImage from "@/assets/img/alpi-constroi-logo.webp";
+---
+
+<header
+  class="md:sticky top-0 z-50 bg-white shadow-sm transition-shadow duration-300"
+  id="header"
+>
+  <nav class="mx-auto container flex items-center justify-between px-6 py-4">
+    <Image
+      src={AlpiConstroiLogoImage}
+      alt="Alpi Constroi Logo"
+      class="max-w-24 md:max-w-30"
+    />
+
+    <button
+      id="menu-toggle"
+      class="relative md:hidden p-1"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg
+        id="icon-hamburger"
+        class="h-6 w-6 transition-all duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg
+        id="icon-close"
+        class="absolute inset-0 m-1 h-6 w-6 opacity-0 scale-75 transition-all duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Desktop nav (hidden on mobile) -->
+    <ul class="hidden md:flex md:flex-row md:gap-8 md:flex-1 md:justify-end uppercase">
+      <li>
+        <a
+          href="#servicos"
+          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+          >Sobre Nós</a
+        >
+      </li>
+      <li>
+        <a
+          href="#sobre"
+          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+          >Serviços</a
+        >
+      </li>
+      <li>
+        <a
+          href="#projetos"
+          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+          >Realizações</a
+        >
+      </li>
+      <li>
+        <a
+          href="#faq"
+          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+          >Diferenciais</a
+        >
+      </li>
+      <li>
+        <a
+          href="#contacto"
+          class="font-medium hover:text-accent transition-colors duration-300"
+          >Contacte-nos</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Mobile full-screen overlay (outside <header> so z-50 header sits above z-40 overlay) -->
+<div
+  id="mobile-nav"
+  class="mobile-nav fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-white uppercase md:hidden"
+  aria-hidden="true"
+>
+  <button
+    id="mobile-nav-close"
+    class="absolute top-4 right-5 p-1"
+    aria-label="Close menu"
+  >
+    <svg
+      class="h-7 w-7"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <ul class="flex flex-col items-center gap-10 text-xl">
+    <li>
+      <a
+        href="#servicos"
+        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+        >Sobre Nós</a
+      >
+    </li>
+    <li>
+      <a
+        href="#sobre"
+        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+        >Serviços</a
+      >
+    </li>
+    <li>
+      <a
+        href="#projetos"
+        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+        >Realizações</a
+      >
+    </li>
+    <li>
+      <a
+        href="#faq"
+        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
+        >Diferenciais</a
+      >
+    </li>
+    <li>
+      <a
+        href="#contacto"
+        class="font-medium hover:text-accent transition-colors duration-300"
+        >Contacte-nos</a
+      >
+    </li>
+  </ul>
+</div>
+
+<style>
+  .mobile-nav {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .mobile-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+  const mobileNavClose = document.getElementById("mobile-nav-close");
+  const iconHamburger = document.getElementById("icon-hamburger");
+  const iconClose = document.getElementById("icon-close");
+
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    mobileNav?.classList.add("is-open");
+    mobileNav?.setAttribute("aria-hidden", "false");
+    iconHamburger?.classList.add("opacity-0", "scale-75");
+    iconClose?.classList.remove("opacity-0", "scale-75");
+    menuToggle?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    mobileNav?.classList.remove("is-open");
+    mobileNav?.setAttribute("aria-hidden", "true");
+    iconHamburger?.classList.remove("opacity-0", "scale-75");
+    iconClose?.classList.add("opacity-0", "scale-75");
+    menuToggle?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  menuToggle?.addEventListener("click", () => {
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  mobileNavClose?.addEventListener("click", () => closeMenu());
+
+  document.querySelectorAll("#mobile-nav a[href^='#']").forEach((link) => {
+    link.addEventListener("click", () => closeMenu());
+  });
+</script>

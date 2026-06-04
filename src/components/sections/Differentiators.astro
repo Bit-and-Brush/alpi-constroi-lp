@@ -1,0 +1,31 @@
+---
+import { differentiators } from '../../data/differentiators';
+---
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="mx-auto max-w-7xl px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+      O Que Nos Diferencia
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {differentiators.map((item) => (
+        <div class="flex gap-4">
+          <div class="flex-shrink-0">
+            <div class="flex h-12 w-12 items-center justify-center rounded-md bg-accent text-primary">
+              <span class="text-xl">✓</span>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-primary mb-2">
+              {item.title}
+            </h3>
+            <p class="text-gray-600 leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,131 @@
+---
+---
+
+<section class="py-16 md:py-24 bg-gray-50" id="contacto">
+  <div class="mx-auto max-w-7xl px-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+      Entre em Contacto
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-xl font-semibold text-primary mb-6">
+          Informações de Contacto
+        </h3>
+
+        <div class="space-y-6">
+          <div class="flex gap-4">
+            <div class="text-accent text-2xl">📞</div>
+            <div>
+              <p class="font-semibold text-primary">Telefone</p>
+              <a href="tel:+351212345678" class="text-gray-600 hover:text-primary transition">
+                +351 21 234 5678
+              </a>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-accent text-2xl">✉️</div>
+            <div>
+              <p class="font-semibold text-primary">Email</p>
+              <a href="mailto:info@alpiconstroi.pt" class="text-gray-600 hover:text-primary transition">
+                info@alpiconstroi.pt
+              </a>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-accent text-2xl">📍</div>
+            <div>
+              <p class="font-semibold text-primary">Endereço</p>
+              <p class="text-gray-600">
+                Rua das Flores, 123<br />
+                1100-000 Lisboa, Portugal
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-4">
+            <div class="text-accent text-2xl">🕒</div>
+            <div>
+              <p class="font-semibold text-primary">Horário</p>
+              <p class="text-gray-600">
+                Segunda a Sexta: 08:00 - 18:00<br />
+                Sábado: 09:00 - 13:00<br />
+                Domingo: Fechado
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div>
+        <form class="space-y-4 bg-white p-8 rounded-lg shadow-sm">
+          <div>
+            <label for="name" class="block text-sm font-medium text-primary mb-2">
+              Nome Completo
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-primary mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+            />
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-medium text-primary mb-2">
+              Telefone
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+            />
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-primary mb-2">
+              Mensagem
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-accent hover:bg-yellow-600 text-primary font-semibold py-3 rounded-lg transition"
+          >
+            Enviar Mensagem
+          </button>
+
+          <p class="text-xs text-gray-500 text-center">
+            * Campo obrigatório
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
