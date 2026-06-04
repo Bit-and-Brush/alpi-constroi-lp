@@ -1,37 +1,32 @@
 export interface Testimonial {
-  quote: string;
   name: string;
-  company: string;
-  rating: number;
+  role: string;
+  quote: string;
 }
 
 export const testimonials: Testimonial[] = [
   {
+    name: "Manuel Silva",
+    role: "Proprietário",
     quote:
-      "Excelente trabalho! A Alpi Constroi executou a remodelação da nossa casa com perfeição. Recomendo vivamente!",
-    name: "João Silva",
-    company: "Cliente Particular",
-    rating: 5,
+      "Contratei a Alpiconstrói para a renovação completa da minha moradia e fiquei impressionado com a qualidade do trabalho. A equipa foi profissional, cumpriu os prazos e a atenção ao detalhe foi excepcional. Recomendo vivamente!",
   },
   {
+    name: "Ana Carvalho",
+    role: "Empresária",
     quote:
-      "Profissionais muito dedicados e atentos aos detalhes. O projeto foi entregue no prazo e com qualidade notável.",
-    name: "Maria Santos",
-    company: "Proprietária de Imóvel",
-    rating: 5,
+      "Contratei a Alpiconstrói para a renovação completa da minha moradia e fiquei impressionado com a qualidade do trabalho. A equipa foi profissional, cumpriu os prazos e a atenção ao detalhe foi excepcional. Recomendo vivamente!",
   },
   {
+    name: "João Pereira",
+    role: "Director Comercial",
     quote:
-      "Trabalhar com a Alpi Constroi foi uma excelente experiência. Equipa competente e muito responsável.",
-    name: "Pedro Costa",
-    company: "Empresário Imobiliário",
-    rating: 5,
+      "Contratei a Alpiconstrói para a renovação completa da minha moradia e fiquei impressionado com a qualidade do trabalho. A equipa foi profissional, cumpriu os prazos e a atenção ao detalhe foi excepcional. Recomendo vivamente!",
   },
   {
+    name: "Luísa Costa",
+    role: "Arquitecta",
     quote:
-      "Confiamos na Alpi Constroi para a construção do nosso edifício comercial. Superaram as nossas expectativas.",
-    name: "Ana Oliveira",
-    company: "Diretora de Desenvolvimento",
-    rating: 5,
+      "Contratei a Alpiconstrói para a renovação completa da minha moradia e fiquei impressionado com a qualidade do trabalho. A equipa foi profissional, cumpriu os prazos e a atenção ao detalhe foi excepcional. Recomendo vivamente!",
   },
 ];

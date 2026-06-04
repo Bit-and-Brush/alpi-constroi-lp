@@ -1,31 +1,30 @@
 ---
-import { differentiators } from '../../data/differentiators';
+import { differentiators } from "@/data/differentiators";
 ---
 
-<section class="py-16 md:py-24 bg-white">
-  <div class="mx-auto max-w-7xl px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-      O Que Nos Diferencia
-    </h2>
+<section class="w-full bg-white py-16 md:py-24" id="diferenciais">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="flex flex-col gap-6 mb-12">
+      <span
+        class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
+      >
+        O Que Nos Diferencia
+      </span>
+      <h2 class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up">
+        Por Que Escolher A Alpiconstrói?
+      </h2>
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {differentiators.map((item) => (
-        <div class="flex gap-4">
-          <div class="flex-shrink-0">
-            <div class="flex h-12 w-12 items-center justify-center rounded-md bg-accent text-primary">
-              <span class="text-xl">✓</span>
-            </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-primary mb-2">
-              {item.title}
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              {item.description}
-            </p>
-          </div>
-        </div>
-      ))}
+    <!-- Content grid with top-border separators -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16">
+      {
+        differentiators.map((item) => (
+          <p class="text-base md:text-lg text-foreground/80 leading-relaxed border-t border-gray-200 py-6 scroll-fade-up">
+            {item.description}
+          </p>
+        ))
+      }
     </div>
   </div>
 </section>
