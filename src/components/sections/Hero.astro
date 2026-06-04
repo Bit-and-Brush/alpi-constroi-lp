@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import HeroImage from "@/assets/img/hero-image.webp";
+import { Image } from "astro:assets";
 ---
 
 <section class="w-full bg-white pt-16 pb-32" id="hero">
@@ -32,7 +32,7 @@ import HeroImage from "@/assets/img/hero-image.webp";
       <div
         class="aspect-4/3 w-full rounded-2xl overflow-clip shadow-xl animate-fade-left [animation-delay:200ms]"
       >
-        <Image src={HeroImage} alt="" />
+        <Image src={HeroImage} alt="" fetchpriority="high" />
       </div>
     </div>
   </div>
