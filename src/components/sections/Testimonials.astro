@@ -1,5 +1,11 @@
 ---
 import { testimonials } from "@/data/testimonials";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
+const localTestimonials = testimonials[lang];
 ---
 
 <section class="w-full bg-white py-16 md:py-24" id="avaliacoes">
@@ -9,17 +15,17 @@ import { testimonials } from "@/data/testimonials";
       <span
         class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
       >
-        Avaliações
+        {t("testimonials.tag")}
       </span>
       <h2 class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up">
-        O Que Dizem Os Nossos Clientes
+        {t("testimonials.title")}
       </h2>
     </div>
 
     <!-- Card grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {
-        testimonials.map((testimonial) => (
+        localTestimonials.map((testimonial) => (
           <div class="border border-gray-200 rounded-2xl p-6 flex flex-col gap-4 scroll-fade-up">
             <!-- Avatar + name -->
             <div class="flex items-center gap-4">

@@ -1,4 +1,9 @@
 ---
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
 ---
 
 <section class="w-full bg-white py-16 md:py-24" id="contacto">
@@ -8,49 +13,62 @@
       <!-- Left: info -->
       <div class="flex flex-col gap-6">
         <span class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up">
-          Contacte-Nos
+          {t("contact.tag")}
         </span>
         <h2 class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up">
-          Fale Connosco
+          {t("contact.title")}
         </h2>
         <p class="text-base md:text-lg text-foreground/80 leading-relaxed scroll-fade-up">
-          Se deseja iniciar um projecto de construção ou melhoria, ou precisa de
-          assistência para uma obra, a nossa equipa de profissionais qualificados
-          está pronta para tratar de tudo por si. Contacte a Alpiconstrói hoje e
-          experiencie serviço de excelência.
+          {t("contact.description")}
         </p>
         <div class="flex flex-col gap-2 mt-4 scroll-fade-up">
           <p class="text-foreground/80">
-            <span class="font-bold text-foreground">EMAIL:</span> geral@alpiconstroi.com
+            <span class="font-bold text-foreground">{t("contact.email.label")}</span> geral@alpiconstroi.com
           </p>
           <p class="text-foreground/80">
-            <span class="font-bold text-foreground">TELEFONE:</span> 222 732 222
+            <span class="font-bold text-foreground">{t("contact.phone.label")}</span> 222 732 222
           </p>
           <p class="text-foreground/80">
-            <span class="font-bold text-foreground">MORADA:</span> Avenida do PIV, polo industrial de Viana, Viana – Luanda, Angola
+            <span class="font-bold text-foreground">{t("contact.address.label")}</span> {t("contact.address.value")}
           </p>
           <p class="text-foreground/80">
-            <span class="font-bold text-foreground">HORÁRIO:</span> Seg – Sex: 8h00 – 18h00
+            <span class="font-bold text-foreground">{t("contact.hours.label")}</span> {t("contact.hours.value")}
           </p>
         </div>
       </div>
 
       <!-- Right: form -->
-      <form id="contact-form" class="flex flex-col gap-6" novalidate>
+      <form
+        id="contact-form"
+        class="flex flex-col gap-6"
+        novalidate
+        data-err-name-required={t("contact.error.name.required")}
+        data-err-name-min={t("contact.error.name.minLength")}
+        data-err-email-required={t("contact.error.email.required")}
+        data-err-email-invalid={t("contact.error.email.invalid")}
+        data-err-phone-required={t("contact.error.phone.required")}
+        data-err-phone-invalid={t("contact.error.phone.invalid")}
+        data-err-message-required={t("contact.error.message.required")}
+        data-err-message-min={t("contact.error.message.minLength")}
+        data-msg-success={t("contact.success")}
+        data-msg-error={t("contact.error.generic")}
+        data-label-submit={t("contact.form.submit")}
+        data-label-submitting={t("contact.form.submitting")}
+      >
         <div class="flex flex-col gap-1">
-          <label for="nome" class="text-sm font-bold text-foreground">Nome:</label>
+          <label for="nome" class="text-sm font-bold text-foreground">{t("contact.form.name.label")}</label>
           <input
             type="text"
             id="nome"
             name="nome"
-            placeholder="O seu nome completo"
+            placeholder={t("contact.form.name.placeholder")}
             class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
           />
           <span id="nome-error" class="text-red-500 text-xs hidden"></span>
         </div>
 
         <div class="flex flex-col gap-1">
-          <label for="email" class="text-sm font-bold text-foreground">Email:</label>
+          <label for="email" class="text-sm font-bold text-foreground">{t("contact.form.email.label")}</label>
           <input
             type="email"
             id="email"
@@ -62,12 +80,12 @@
         </div>
 
         <div class="flex flex-col gap-1">
-          <label for="telefone" class="text-sm font-bold text-foreground">Telefone:</label>
+          <label for="telefone" class="text-sm font-bold text-foreground">{t("contact.form.phone.label")}</label>
           <input
             type="tel"
             id="telefone"
             name="telefone"
-            placeholder="O seu número de telefone"
+            placeholder={t("contact.form.phone.placeholder")}
             maxlength="9"
             class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
           />
@@ -75,13 +93,13 @@
         </div>
 
         <div class="flex flex-col gap-1">
-          <label for="mensagem" class="text-sm font-bold text-foreground">Mensagem:</label>
+          <label for="mensagem" class="text-sm font-bold text-foreground">{t("contact.form.message.label")}</label>
           <textarea
             id="mensagem"
             name="mensagem"
             rows="4"
             maxlength="300"
-            placeholder="A sua mensagem..."
+            placeholder={t("contact.form.message.placeholder")}
             class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors resize-none"
           ></textarea>
           <div class="flex justify-between items-center">
@@ -100,7 +118,7 @@
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
           </svg>
-          <span id="submit-label">ENVIAR MENSAGEM</span>
+          <span id="submit-label">{t("contact.form.submit")}</span>
         </button>
       </form>
 
@@ -113,6 +131,7 @@
 
   const form = document.getElementById("contact-form") as HTMLFormElement;
   const feedback = document.getElementById("form-feedback") as HTMLElement;
+  const d = form.dataset;
 
   function sanitize(value: string): string {
     return value
@@ -157,40 +176,40 @@
     const mensagem = (document.getElementById("mensagem") as HTMLTextAreaElement).value.trim();
 
     if (!nome) {
-      showError("nome-error", "O nome é obrigatório.");
+      showError("nome-error", d.errNameRequired!);
       valid = false;
     } else if (nome.length < 2) {
-      showError("nome-error", "O nome deve ter pelo menos 2 caracteres.");
+      showError("nome-error", d.errNameMin!);
       valid = false;
     } else {
       clearError("nome-error");
     }
 
     if (!email) {
-      showError("email-error", "O email é obrigatório.");
+      showError("email-error", d.errEmailRequired!);
       valid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showError("email-error", "Introduza um email válido.");
+      showError("email-error", d.errEmailInvalid!);
       valid = false;
     } else {
       clearError("email-error");
     }
 
     if (!telefone) {
-      showError("telefone-error", "O telefone é obrigatório.");
+      showError("telefone-error", d.errPhoneRequired!);
       valid = false;
     } else if (!/^(\+244\s?)?[29]\d{2}\s?\d{3}\s?\d{3}$/.test(telefone)) {
-      showError("telefone-error", "Introduza um número angolano válido (ex: 922 123 456).");
+      showError("telefone-error", d.errPhoneInvalid!);
       valid = false;
     } else {
       clearError("telefone-error");
     }
 
     if (!mensagem) {
-      showError("mensagem-error", "A mensagem é obrigatória.");
+      showError("mensagem-error", d.errMessageRequired!);
       valid = false;
     } else if (mensagem.length < 10) {
-      showError("mensagem-error", "A mensagem deve ter pelo menos 10 caracteres.");
+      showError("mensagem-error", d.errMessageMin!);
       valid = false;
     } else {
       clearError("mensagem-error");
@@ -203,7 +222,7 @@
     const label = document.getElementById("submit-label") as HTMLElement;
     btn.disabled = true;
     spinner.classList.remove("hidden");
-    label.textContent = "A ENVIAR...";
+    label.textContent = d.labelSubmitting!;
 
     const result = await submitContactForm({
       name: sanitize(nome),
@@ -214,15 +233,15 @@
 
     btn.disabled = false;
     spinner.classList.add("hidden");
-    label.textContent = "ENVIAR MENSAGEM";
+    label.textContent = d.labelSubmit!;
     feedback.classList.remove("hidden");
 
     if (result.success) {
-      feedback.textContent = "Mensagem enviada com sucesso! Entraremos em contacto em breve.";
+      feedback.textContent = d.msgSuccess!;
       feedback.className = "text-sm text-green-600";
       form.reset();
     } else {
-      feedback.textContent = result.error ?? "Ocorreu um erro. Tente novamente.";
+      feedback.textContent = result.error ?? d.msgError!;
       feedback.className = "text-sm text-red-500";
     }
   });

@@ -1,6 +1,12 @@
 ---
 import Image from "astro/components/Image.astro";
 import AlpiConstroiLogoImage from "@/assets/img/alpi-constroi-logo.webp";
+import type { Lang } from "../i18n/ui";
+import { useTranslations } from "../i18n/utils";
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
 ---
 
 <header
@@ -51,42 +57,45 @@ import AlpiConstroiLogoImage from "@/assets/img/alpi-constroi-logo.webp";
 
     <!-- Desktop nav (hidden on mobile) -->
     <ul
-      class="hidden md:flex md:flex-row md:gap-8 md:flex-1 md:justify-end uppercase"
+      class="hidden md:flex md:flex-row md:gap-8 md:flex-1 md:justify-end uppercase items-center"
     >
       <li>
         <a
           href="#sobre"
-          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-          >Sobre Nós</a
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.about")}</a
         >
       </li>
       <li>
         <a
           href="#servicos"
-          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-          >Serviços</a
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.services")}</a
         >
       </li>
       <li>
         <a
           href="#projetos"
-          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-          >Realizações</a
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.projects")}</a
         >
       </li>
       <li>
         <a
           href="#faq"
-          class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-          >Diferenciais</a
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.differentiators")}</a
         >
       </li>
       <li>
         <a
           href="#contacto"
-          class="font-medium hover:text-accent transition-colors duration-300"
-          >Contacte-nos</a
+          class="font-medium hover:text-primary transition-colors duration-300"
+          >{t("nav.contact")}</a
         >
+      </li>
+      <li>
+        <LanguagePicker />
       </li>
     </ul>
   </nav>
@@ -116,37 +125,40 @@ import AlpiConstroiLogoImage from "@/assets/img/alpi-constroi-logo.webp";
     <li>
       <a
         href="#sobre"
-        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-        >Sobre Nós</a
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.about")}</a
       >
     </li>
     <li>
       <a
         href="#servicos"
-        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-        >Serviços</a
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.services")}</a
       >
     </li>
     <li>
       <a
         href="#projetos"
-        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-        >Realizações</a
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.projects")}</a
       >
     </li>
     <li>
       <a
         href="#faq"
-        class="font-medium text-gray-700 hover:text-accent transition-colors duration-300"
-        >Diferenciais</a
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.differentiators")}</a
       >
     </li>
     <li>
       <a
         href="#contacto"
-        class="font-medium hover:text-accent transition-colors duration-300"
-        >Contacte-nos</a
+        class="font-medium hover:text-primary transition-colors duration-300"
+        >{t("nav.contact")}</a
       >
+    </li>
+    <li>
+      <LanguagePicker />
     </li>
   </ul>
 </div>

@@ -17,6 +17,6 @@ export async function submitContactForm(
     if (!res.ok) throw new Error();
     return { success: true };
   } catch {
-    return { success: false, error: "Falha ao enviar mensagem. Tente novamente." };
+    return { success: false };
   }
 }

@@ -1,6 +1,11 @@
 ---
-import HeroImage from "@/assets/img/hero-image.webp";
 import { Image } from "astro:assets";
+import HeroImage from "@/assets/img/hero-image.webp";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
 ---
 
 <section class="w-full bg-white pt-16 pb-32" id="hero">
@@ -10,21 +15,19 @@ import { Image } from "astro:assets";
         <h1
           class="text-3xl md:text-5xl font-bold text-foreground leading-tight max-w-105 animate-fade-up"
         >
-          O Seu Serviço De Construção Civil De Confiança
+          {t("hero.title")}
         </h1>
         <p
           class="text-base md:text-xl text-foreground/90 leading-relaxed animate-fade-up [animation-delay:150ms]"
         >
-          Os nossos profissionais dedicados transformam visões em obra feita.
-          Construções de alta qualidade, seguras e sustentáveis para manter o
-          seu lar ou negócio em perfeitas condições, com serviço de excelência.
+          {t("hero.description")}
         </p>
         <div class="animate-fade-up [animation-delay:300ms]">
           <a
             href="#contacto"
             class="block md:inline-block text-center bg-primary text-white font-semibold px-8 py-3 rounded-full uppercase tracking-widest transition-all hover:opacity-85 hover:shadow-lg active:scale-95"
           >
-            Contacte-nos
+            {t("hero.cta")}
           </a>
         </div>
       </div>

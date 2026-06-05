@@ -2,27 +2,27 @@
 import { Font } from "astro:assets";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import type { Lang } from "../i18n/ui";
+import { useTranslations } from "../i18n/utils";
 import "../styles/global.css";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
+const htmlLang = lang === "pt" ? "pt-AO" : "en";
 ---
 
 <!doctype html>
-<html lang="pt-AO">
+<html lang={htmlLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Alpi Constroi — Serviços de construção civil e remodelação de qualidade em Angola"
-    />
+    <meta name="description" content={t("layout.description")} />
     <meta property="og:title" content="Alpi Constroi" />
-    <meta
-      property="og:description"
-      content="Serviços de construção civil e remodelação de qualidade em Angola"
-    />
+    <meta property="og:description" content={t("layout.og.description")} />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Font cssVariable="--font-primary" />
-    <title>Alpi Constroi — Construção e Remodelação</title>
+    <title>{t("layout.title")}</title>
   </head>
   <body class="font-sans">
     <Header />

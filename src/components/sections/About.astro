@@ -1,6 +1,11 @@
 ---
-import AboutUsImage from "@/assets/img/about-us.webp";
 import { Image } from "astro:assets";
+import AboutUsImage from "@/assets/img/about-us.webp";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
 ---
 
 <section class="w-full bg-white py-16 md:py-24" id="sobre">
@@ -11,35 +16,29 @@ import { Image } from "astro:assets";
         <span
           class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
         >
-          Quem Somos
+          {t("about.tag")}
         </span>
 
         <h2
           class="text-3xl md:text-5xl font-bold text-foreground leading-tight scroll-fade-up"
         >
-          Bem-Vindo À Alpiconstrói, A Sua Parceira De Confiança
+          {t("about.title")}
         </h2>
 
         <p class="text-base md:text-lg leading-relaxed scroll-fade-up">
-          Na Alpiconstrói transformamos visões em obra feita, com uma trajetória
-          de sólida experiência e compromisso inabalável com a excelência desde
-          2007.
+          {t("about.p1")}
         </p>
 
         <p
           class="text-base md:text-lg text-foreground/80 leading-relaxed scroll-fade-up"
         >
-          Somos movidos pela paixão de transformar projetos em realidade,
-          entregando construções de alta qualidade, seguras e sustentáveis, no
-          respeito pela vontade do cliente.
+          {t("about.p2")}
         </p>
 
         <p
           class="text-base md:text-lg text-foreground/80 leading-relaxed scroll-fade-up"
         >
-          A nossa actuação abrange obras residenciais, comerciais, industriais,
-          infraestruturas e requalificação, sempre buscando superar as
-          expectativas.
+          {t("about.p3")}
         </p>
       </div>
 
@@ -48,25 +47,25 @@ import { Image } from "astro:assets";
         <div
           class="aspect-4/3 w-full bg-gray-200 rounded-2xl shadow-xl overflow-clip"
         >
-          <Image src={AboutUsImage} alt="Sobre nós" />
+          <Image src={AboutUsImage} alt={t("about.alt")} />
         </div>
 
         <div class="grid grid-cols-2 gap-4">
           <div class="bg-primary/10 rounded-xl p-6">
             <p class="text-3xl font-bold text-foreground">17+</p>
-            <p class="text-sm text-foreground/70 mt-1">Anos no mercado</p>
+            <p class="text-sm text-foreground/70 mt-1">{t("about.stat.years")}</p>
           </div>
           <div class="bg-primary/10 rounded-xl p-6">
             <p class="text-3xl font-bold text-foreground">500+</p>
-            <p class="text-sm text-foreground/70 mt-1">Clientes Satisfeitos</p>
+            <p class="text-sm text-foreground/70 mt-1">{t("about.stat.clients")}</p>
           </div>
           <div class="bg-primary/10 rounded-xl p-6">
             <p class="text-3xl font-bold text-foreground">600+</p>
-            <p class="text-sm text-foreground/70 mt-1">Obras Concluídas</p>
+            <p class="text-sm text-foreground/70 mt-1">{t("about.stat.works")}</p>
           </div>
           <div class="bg-primary/10 rounded-xl p-6">
             <p class="text-3xl font-bold text-foreground">24/7</p>
-            <p class="text-sm text-foreground/70 mt-1">Suporte ao Cliente</p>
+            <p class="text-sm text-foreground/70 mt-1">{t("about.stat.support")}</p>
           </div>
         </div>
       </div>

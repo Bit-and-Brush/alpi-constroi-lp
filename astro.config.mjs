@@ -1,11 +1,17 @@
 // @ts-check
-import path from "node:path";
+
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
+import path from "node:path";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://alpiconstroi.pt",
+  i18n: {
+    locales: ["pt", "en"],
+    defaultLocale: "pt",
+    routing: { prefixDefaultLocale: false },
+  },
   fonts: [
     {
       provider: fontProviders.fontsource(),

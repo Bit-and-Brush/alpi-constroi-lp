@@ -1,6 +1,12 @@
 ---
-import { projects } from "@/data/projects";
 import { Image } from "astro:assets";
+import { projects } from "@/data/projects";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
+const localProjects = projects[lang];
 ---
 
 <section class="w-full bg-white py-16 md:py-24" id="projetos">
@@ -10,24 +16,22 @@ import { Image } from "astro:assets";
       <span
         class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
       >
-        As Nossas Realizações
+        {t("projects.tag")}
       </span>
       <h2
         class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up"
       >
-        Orgulhamo-Nos Do Nosso Trabalho
+        {t("projects.title")}
       </h2>
       <p class="text-base md:text-lg text-foreground/70 max-w-2xl scroll-fade-up">
-        Temos imenso orgulho na qualidade do nosso trabalho. Seja de pequenas
-        reparações a grandes renovações, a nossa equipa aborda cada projecto com
-        o mesmo nível de dedicação e atenção ao detalhe.
+        {t("projects.description")}
       </p>
     </div>
 
     <!-- Project rows -->
     <div class="flex flex-col gap-32 mt-16">
       {
-        projects.map((project, index) => (
+        localProjects.map((project, index) => (
           <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
             <!-- Image: left on odd rows, right on even -->
             <div
@@ -46,11 +50,11 @@ import { Image } from "astro:assets";
             <div class="flex flex-col gap-6 scroll-fade-up">
               <h3 class="text-2xl font-bold text-foreground">{project.title}</h3>
               <div class="flex flex-col gap-2">
-                <p class="font-bold text-foreground">Problema:</p>
+                <p class="font-bold text-foreground">{t("projects.problem")}</p>
                 <p class="text-foreground/80 leading-relaxed">{project.problem}</p>
               </div>
               <div class="flex flex-col gap-2">
-                <p class="font-bold text-foreground">Solução:</p>
+                <p class="font-bold text-foreground">{t("projects.solution")}</p>
                 <p class="text-foreground/80 leading-relaxed">{project.solution}</p>
               </div>
             </div>
