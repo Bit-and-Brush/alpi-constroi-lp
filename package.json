@@ -14,7 +14,7 @@
     "format": "biome format ./src --write",
     "check": "biome check ./src",
     "generate-types": "wrangler types"
-  },
+  }, 
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.1",
     "@fontsource/poppins": "^5.2.7",
