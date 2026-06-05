@@ -9,6 +9,8 @@ import "../styles/global.css";
 const lang = (Astro.currentLocale ?? "pt") as Lang;
 const t = useTranslations(lang);
 const htmlLang = lang === "pt" ? "pt-AO" : "en";
+const ogLocale = lang === "pt" ? "pt_AO" : "en_US";
+const ogImageUrl = new URL("/android-chrome-512x512.png", Astro.site).href;
 ---
 
 <!doctype html>
@@ -17,9 +19,18 @@ const htmlLang = lang === "pt" ? "pt-AO" : "en";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={t("layout.description")} />
-    <meta property="og:title" content="Alpi Constroi" />
+    <meta property="og:title" content={t("layout.title")} />
     <meta property="og:description" content={t("layout.og.description")} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={t("layout.og.imageAlt")} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:site_name" content="Alpi Constroi" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t("layout.title")} />
+    <meta name="twitter:description" content={t("layout.og.description")} />
+    <meta name="twitter:image" content={ogImageUrl} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">

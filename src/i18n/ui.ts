@@ -13,6 +13,7 @@ export const ui = {
       "Alpi Constroi — Serviços de construção civil e remodelação de qualidade em Angola",
     "layout.og.description":
       "Serviços de construção civil e remodelação de qualidade em Angola",
+    "layout.og.imageAlt": "Obras de construção civil da Alpi Constroi",
 
     // Header nav
     "nav.about": "Sobre Nós",
@@ -124,6 +125,7 @@ export const ui = {
       "Alpi Constroi — Quality civil construction and renovation services in Angola",
     "layout.og.description":
       "Quality civil construction and renovation services in Angola",
+    "layout.og.imageAlt": "Alpi Constroi civil construction works",
 
     // Header nav
     "nav.about": "About Us",
