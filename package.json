@@ -12,17 +12,23 @@
     "astro": "astro",
     "lint": "biome lint ./src",
     "format": "biome format ./src --write",
-    "check": "biome check ./src"
+    "check": "biome check ./src",
+    "generate-types": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.6.1",
     "@fontsource/poppins": "^5.2.7",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.2",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "wrangler": "^4.98.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.16",
     "@types/node": "^25.9.1"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }

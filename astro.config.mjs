@@ -3,9 +3,12 @@ import path from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, fontProviders } from "astro/config";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://alpiconstroi.pt",
+
   fonts: [
     {
       provider: fontProviders.fontsource(),
@@ -13,6 +16,7 @@ export default defineConfig({
       cssVariable: "--font-primary",
     },
   ],
+
   vite: {
     plugins: [tailwindcss()],
     resolve: {
@@ -21,4 +25,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare(),
 });
