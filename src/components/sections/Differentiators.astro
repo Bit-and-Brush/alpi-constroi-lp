@@ -1,4 +1,9 @@
 ---
+import { Image } from "astro:assets";
+// TODO: Replace with client's actual work photos
+import work1 from "@/assets/img/projects/project-1.webp";
+import work2 from "@/assets/img/projects/project-2.webp";
+import work3 from "@/assets/img/projects/project-3.webp";
 import { differentiators } from "@/data/differentiators";
 import type { Lang } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
@@ -29,6 +34,17 @@ const localDifferentiators = differentiators[lang];
           <p class="text-base md:text-lg text-foreground/80 leading-relaxed border-t border-gray-200 py-6 scroll-fade-up">
             {item.description}
           </p>
+        ))
+      }
+    </div>
+
+    <!-- Work photos -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      {
+        [work1, work2, work3].map((src) => (
+          <div class="aspect-4/3 w-full bg-gray-200 rounded-2xl overflow-hidden scroll-fade-up">
+            <Image src={src} alt="" class="object-cover w-full h-full" />
+          </div>
         ))
       }
     </div>
