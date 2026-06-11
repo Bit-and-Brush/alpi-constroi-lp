@@ -61,10 +61,6 @@ export const ui = {
     "differentiators.tag": "O Que Nos Diferencia",
     "differentiators.title": "Por Que Escolher A Alpiconstrói?",
 
-    // Testimonials
-    "testimonials.tag": "Avaliações",
-    "testimonials.title": "O Que Dizem Os Nossos Clientes",
-
     // FAQ
     "faq.tag": "FAQ",
     "faq.title": "Perguntas Frequentes",
@@ -172,10 +168,6 @@ export const ui = {
     // Differentiators
     "differentiators.tag": "What Sets Us Apart",
     "differentiators.title": "Why Choose Alpiconstrói?",
-
-    // Testimonials
-    "testimonials.tag": "Reviews",
-    "testimonials.title": "What Our Clients Say",
 
     // FAQ
     "faq.tag": "FAQ",
