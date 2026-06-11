@@ -51,10 +51,10 @@ export const ui = {
 
     // Projects
     "projects.tag": "As Nossas Realizações",
-    "projects.title": "Orgulhamo-Nos Do Nosso Trabalho",
+    "projects.title": "Orgulhamo-nos Do Nosso Trabalho",
     "projects.description":
       "Temos imenso orgulho na qualidade do nosso trabalho. Seja de pequenas reparações a grandes renovações, a nossa equipa aborda cada projecto com o mesmo nível de dedicação e atenção ao detalhe.",
-    "projects.problem": "Problema:",
+    "projects.problem": "Desafio:",
     "projects.solution": "Solução:",
 
     // Differentiators
