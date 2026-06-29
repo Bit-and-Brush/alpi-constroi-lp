@@ -106,6 +106,7 @@ const t = useTranslations(lang);
   id="mobile-nav"
   class="mobile-nav fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-white uppercase md:hidden"
   aria-hidden="true"
+  inert
 >
   <button
     id="mobile-nav-close"
@@ -181,9 +182,9 @@ const t = useTranslations(lang);
 </style>
 
 <script>
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobileNav = document.getElementById("mobile-nav");
-  const mobileNavClose = document.getElementById("mobile-nav-close");
+  const menuToggle = document.getElementById("menu-toggle") as HTMLElement;
+  const mobileNav = document.getElementById("mobile-nav") as HTMLElement;
+  const mobileNavClose = document.getElementById("mobile-nav-close") as HTMLElement;
   const iconHamburger = document.getElementById("icon-hamburger");
   const iconClose = document.getElementById("icon-close");
 
@@ -191,32 +192,60 @@ const t = useTranslations(lang);
 
   function openMenu() {
     isOpen = true;
-    mobileNav?.classList.add("is-open");
-    mobileNav?.setAttribute("aria-hidden", "false");
+    mobileNav.removeAttribute("inert");
+    mobileNav.classList.add("is-open");
+    mobileNav.setAttribute("aria-hidden", "false");
     iconHamburger?.classList.add("opacity-0", "scale-75");
     iconClose?.classList.remove("opacity-0", "scale-75");
-    menuToggle?.setAttribute("aria-expanded", "true");
+    menuToggle.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
+    mobileNavClose.focus();
   }
 
   function closeMenu() {
     isOpen = false;
-    mobileNav?.classList.remove("is-open");
-    mobileNav?.setAttribute("aria-hidden", "true");
+    mobileNav.classList.remove("is-open");
+    mobileNav.setAttribute("inert", "");
+    mobileNav.setAttribute("aria-hidden", "true");
     iconHamburger?.classList.remove("opacity-0", "scale-75");
     iconClose?.classList.add("opacity-0", "scale-75");
-    menuToggle?.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
+    menuToggle.focus();
   }
 
-  menuToggle?.addEventListener("click", () => {
+  menuToggle.addEventListener("click", () => {
     if (isOpen) closeMenu();
     else openMenu();
   });
 
-  mobileNavClose?.addEventListener("click", () => closeMenu());
+  mobileNavClose.addEventListener("click", () => closeMenu());
 
   document.querySelectorAll("#mobile-nav a[href^='#']").forEach((link) => {
     link.addEventListener("click", () => closeMenu());
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen) closeMenu();
+  });
+
+  // Focus trap within the open mobile menu
+  mobileNav.addEventListener("keydown", (e) => {
+    if (!isOpen || e.key !== "Tab") return;
+
+    const focusable = Array.from(
+      mobileNav.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
 </script>

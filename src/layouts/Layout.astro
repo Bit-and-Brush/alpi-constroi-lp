@@ -39,6 +39,7 @@ const ogImageUrl = new URL("/android-chrome-512x512.png", Astro.site).href;
     <title>{t("layout.title")}</title>
   </head>
   <body class="font-sans">
+    <a href="#main-content" class="skip-link">{t("layout.skipLink")}</a>
     <Header />
     <slot />
     <Footer />
