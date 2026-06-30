@@ -9,7 +9,7 @@ import path from "node:path";
 // https://astro.build/config
 export default defineConfig({
   site: "https://alpiconstroi.com",
-  adapter: node({ mode: "standalone" }),
+  adapter: node({ mode: "middleware" }),
   env: {
     schema: {
       RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
