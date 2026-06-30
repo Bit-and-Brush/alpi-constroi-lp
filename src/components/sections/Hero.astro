@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import HeroImage from "@/assets/img/hero-image.webp";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
+---
+
+<section class="w-full bg-white pt-16 pb-32" id="hero">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+      <div class="flex flex-col gap-8">
+        <h1
+          class="text-3xl md:text-5xl font-bold text-foreground leading-tight max-w-105 animate-fade-up"
+        >
+          {t("hero.title")}
+        </h1>
+        <p
+          class="text-base md:text-xl text-foreground/90 leading-relaxed animate-fade-up [animation-delay:150ms]"
+        >
+          {t("hero.description")}
+        </p>
+        <div class="animate-fade-up [animation-delay:300ms]">
+          <a
+            href="#contacto"
+            class="block md:inline-block text-center bg-primary text-white font-semibold px-8 py-3 rounded-full uppercase tracking-widest transition-all hover:opacity-85 hover:shadow-lg active:scale-95"
+          >
+            {t("hero.cta")}
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="aspect-4/3 w-full rounded-2xl overflow-clip shadow-xl animate-fade-left [animation-delay:200ms]"
+      >
+        <Image src={HeroImage} alt="" fetchpriority="high" />
+      </div>
+    </div>
+  </div>
+</section>

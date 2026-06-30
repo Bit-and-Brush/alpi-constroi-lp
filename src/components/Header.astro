@@ -1,0 +1,251 @@
+---
+import Image from "astro/components/Image.astro";
+import AlpiConstroiLogoImage from "@/assets/img/alpi-constroi-logo.webp";
+import type { Lang } from "../i18n/ui";
+import { useTranslations } from "../i18n/utils";
+import LanguagePicker from "./LanguagePicker.astro";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
+---
+
+<header
+  class="md:sticky top-0 z-50 bg-white shadow-sm transition-shadow duration-300"
+  id="header"
+>
+  <nav class="mx-auto container flex items-center justify-between px-6 py-4">
+    <Image
+      src={AlpiConstroiLogoImage}
+      alt="Alpi Constroi Logo"
+      class="max-w-24 md:max-w-30"
+      fetchpriority="high"
+    />
+
+    <button
+      id="menu-toggle"
+      class="relative md:hidden p-1"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg
+        id="icon-hamburger"
+        class="h-6 w-6 transition-all duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg
+        id="icon-close"
+        class="absolute inset-0 m-1 h-6 w-6 opacity-0 scale-75 transition-all duration-300"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Desktop nav (hidden on mobile) -->
+    <ul
+      class="hidden md:flex md:flex-row md:gap-8 md:flex-1 md:justify-end uppercase items-center"
+    >
+      <li>
+        <a
+          href="#sobre"
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.about")}</a
+        >
+      </li>
+      <li>
+        <a
+          href="#servicos"
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.services")}</a
+        >
+      </li>
+      <li>
+        <a
+          href="#projetos"
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.projects")}</a
+        >
+      </li>
+      <li>
+        <a
+          href="#faq"
+          class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+          >{t("nav.differentiators")}</a
+        >
+      </li>
+      <li>
+        <a
+          href="#contacto"
+          class="font-medium hover:text-primary transition-colors duration-300"
+          >{t("nav.contact")}</a
+        >
+      </li>
+      <li>
+        <LanguagePicker />
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Mobile full-screen overlay (outside <header> so z-50 header sits above z-40 overlay) -->
+<div
+  id="mobile-nav"
+  class="mobile-nav fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 bg-white uppercase md:hidden"
+  aria-hidden="true"
+  inert
+>
+  <button
+    id="mobile-nav-close"
+    class="absolute top-4 right-5 p-1"
+    aria-label="Close menu"
+  >
+    <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <ul class="flex flex-col items-center gap-10 text-xl">
+    <li>
+      <a
+        href="#sobre"
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.about")}</a
+      >
+    </li>
+    <li>
+      <a
+        href="#servicos"
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.services")}</a
+      >
+    </li>
+    <li>
+      <a
+        href="#projetos"
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.projects")}</a
+      >
+    </li>
+    <li>
+      <a
+        href="#faq"
+        class="font-medium text-gray-700 hover:text-primary transition-colors duration-300"
+        >{t("nav.differentiators")}</a
+      >
+    </li>
+    <li>
+      <a
+        href="#contacto"
+        class="font-medium hover:text-primary transition-colors duration-300"
+        >{t("nav.contact")}</a
+      >
+    </li>
+    <li>
+      <LanguagePicker />
+    </li>
+  </ul>
+</div>
+
+<style>
+  .mobile-nav {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .mobile-nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle") as HTMLElement;
+  const mobileNav = document.getElementById("mobile-nav") as HTMLElement;
+  const mobileNavClose = document.getElementById("mobile-nav-close") as HTMLElement;
+  const iconHamburger = document.getElementById("icon-hamburger");
+  const iconClose = document.getElementById("icon-close");
+
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    mobileNav.removeAttribute("inert");
+    mobileNav.classList.add("is-open");
+    mobileNav.setAttribute("aria-hidden", "false");
+    iconHamburger?.classList.add("opacity-0", "scale-75");
+    iconClose?.classList.remove("opacity-0", "scale-75");
+    menuToggle.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+    mobileNavClose.focus();
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    mobileNav.classList.remove("is-open");
+    mobileNav.setAttribute("inert", "");
+    mobileNav.setAttribute("aria-hidden", "true");
+    iconHamburger?.classList.remove("opacity-0", "scale-75");
+    iconClose?.classList.add("opacity-0", "scale-75");
+    menuToggle.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    menuToggle.focus();
+  }
+
+  menuToggle.addEventListener("click", () => {
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  mobileNavClose.addEventListener("click", () => closeMenu());
+
+  document.querySelectorAll("#mobile-nav a[href^='#']").forEach((link) => {
+    link.addEventListener("click", () => closeMenu());
+  });
+
+  // Close on Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen) closeMenu();
+  });
+
+  // Focus trap within the open mobile menu
+  mobileNav.addEventListener("keydown", (e) => {
+    if (!isOpen || e.key !== "Tab") return;
+
+    const focusable = Array.from(
+      mobileNav.querySelectorAll<HTMLElement>("a[href], button:not([disabled])")
+    );
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+</script>

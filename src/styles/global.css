@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@utility scroll-fade-up {
+  animation: fade-up 0.6s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 50% entry 90%;
+}
+
+@utility scroll-fade-left {
+  animation: fade-left 0.6s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 50% entry 90%;
+}
+
+@theme {
+  --animate-fade-up: fade-up 0.6s ease-out both;
+  --animate-fade-left: fade-left 0.6s ease-out both;
+  --color-primary: rgba(14, 98, 255, 1);
+  --color-foreground: rgba(23, 23, 23, 1);
+  --color-accent: #f59e0b;
+  --color-secondary: #6b7280;
+  --font-sans: var(--font-primary);
+  --container-max-width: 1200px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Skip link: visually hidden until focused */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0.5rem 1.25rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus-visible {
+  top: 0;
+}
+
+/* Global focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}

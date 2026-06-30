@@ -1,0 +1,39 @@
+---
+import { faqItems } from "@/data/faq";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
+const localFaq = faqItems[lang];
+---
+
+<section class="w-full bg-white py-16 md:py-24" id="faq">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="flex flex-col gap-6 mb-12">
+      <span
+        class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
+      >
+        {t("faq.tag")}
+      </span>
+      <h2 class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up">
+        {t("faq.title")}
+      </h2>
+    </div>
+
+    <!-- Items -->
+    <div class="flex flex-col">
+      {
+        localFaq.map((item, index) => (
+          <div class="border-t border-gray-200 py-8 scroll-fade-up">
+            <h3 class="text-lg md:text-xl font-bold text-foreground mb-3">
+              {index + 1}. {item.question}
+            </h3>
+            <p class="text-foreground/70 leading-relaxed">{item.answer}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

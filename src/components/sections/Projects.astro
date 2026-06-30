@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import { projects } from "@/data/projects";
+import type { Lang } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const lang = (Astro.currentLocale ?? "pt") as Lang;
+const t = useTranslations(lang);
+const localProjects = projects[lang];
+---
+
+<section class="w-full bg-white py-16 md:py-24" id="projetos">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="flex flex-col gap-6">
+      <span
+        class="bg-foreground text-white text-sm px-4 py-1 rounded-full w-fit scroll-fade-up"
+      >
+        {t("projects.tag")}
+      </span>
+      <h2
+        class="text-3xl md:text-5xl font-bold text-foreground scroll-fade-up"
+      >
+        {t("projects.title")}
+      </h2>
+      <p class="text-base md:text-lg text-foreground/70 max-w-2xl scroll-fade-up">
+        {t("projects.description")}
+      </p>
+    </div>
+
+    <!-- Project rows -->
+    <div class="flex flex-col gap-32 mt-16">
+      {
+        localProjects.map((project, index) => (
+          <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+            <!-- Image: left on odd rows, right on even -->
+            <div
+              class:list={[
+                "aspect-4/3 w-full bg-gray-200 rounded-2xl shadow-sm scroll-fade-up",
+                { "md:order-last": index % 2 !== 0 },
+              ]}
+            >
+              <Image
+                src={project.image}
+                alt={project.title}
+                class="object-cover rounded-2xl w-full h-full"/>
+            </div>
+
+            <!-- Content -->
+            <div class="flex flex-col gap-6 scroll-fade-up">
+              <h3 class="text-2xl font-bold text-foreground">{project.title}</h3>
+              <div class="flex flex-col gap-2">
+                <p class="font-bold text-foreground">{t("projects.problem")}</p>
+                <p class="text-foreground/80 leading-relaxed">{project.problem}</p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="font-bold text-foreground">{t("projects.solution")}</p>
+                <p class="text-foreground/80 leading-relaxed">{project.solution}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
