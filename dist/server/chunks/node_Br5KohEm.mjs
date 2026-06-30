@@ -1,4 +1,4 @@
-import { A as AstroError, e as InvalidComponentArgs, t as removeQueryString, N as NoImageMetadata, o as isRemoteAllowed, F as FailedToFetchRemoteImageDimensions, R as RemoteImageNotAllowed, q as joinPaths, E as ExpectedImage, p as isRemotePath, L as LocalImageUsedWrongly, g as MissingImageDimension, i as UnsupportedImageFormat, d as IncompatibleDescriptorOptions, U as UnsupportedImageConversion, f as InvalidImageService, a as ExpectedImageOptions, b as ExpectedNotESMImage, I as ImageMissingAlt, r as maybeRenderHead, j as addAttribute, w as spreadAttributes, u as renderTemplate, c as FontFamilyNotFound, y as unescapeHTML, M as MissingGetFontFileRequestUrl, n as isParentDirectory } from './server_8g2TgDm8.mjs';
+import { A as AstroError, e as InvalidComponentArgs, t as removeQueryString, N as NoImageMetadata, o as isRemoteAllowed, F as FailedToFetchRemoteImageDimensions, R as RemoteImageNotAllowed, q as joinPaths, E as ExpectedImage, p as isRemotePath, L as LocalImageUsedWrongly, g as MissingImageDimension, i as UnsupportedImageFormat, d as IncompatibleDescriptorOptions, U as UnsupportedImageConversion, f as InvalidImageService, a as ExpectedImageOptions, b as ExpectedNotESMImage, I as ImageMissingAlt, r as maybeRenderHead, j as addAttribute, w as spreadAttributes, u as renderTemplate, c as FontFamilyNotFound, y as unescapeHTML, M as MissingGetFontFileRequestUrl, n as isParentDirectory } from './server_DZMUv2Qb.mjs';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -1583,7 +1583,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_rD90w3El.mjs'
+      './sharp_ZxgsurVc.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;

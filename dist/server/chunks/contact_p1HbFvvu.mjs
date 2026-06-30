@@ -1,4 +1,4 @@
-import { k as createInvalidVariablesError, l as getEnv$1, v as setOnSetGetEnv } from './server_8g2TgDm8.mjs';
+import { l as getEnv$1, k as createInvalidVariablesError, v as setOnSetGetEnv } from './server_DZMUv2Qb.mjs';
 import { Resend } from 'resend';
 
 function getEnvFieldType(options) {
@@ -143,7 +143,7 @@ function validateEnvVariable(value, options) {
   return selectValidator(options)(value);
 }
 
-const schema = {"RESEND_API_KEY":{"context":"server","access":"secret","type":"string"},"CONTACT_TO":{"context":"server","access":"secret","type":"string"},"CONTACT_FROM":{"context":"server","access":"secret","type":"string"}};
+const schema = {"RESEND_API_KEY":{"context":"server","access":"secret","optional":true,"type":"string"},"CONTACT_TO":{"context":"server","access":"secret","optional":true,"type":"string"},"CONTACT_FROM":{"context":"server","access":"secret","optional":true,"type":"string"}};
 
 // @ts-check
 
@@ -153,6 +153,10 @@ const schema = {"RESEND_API_KEY":{"context":"server","access":"secret","type":"s
 // biome-ignore lint/correctness/noUnusedFunctionParameters: `key` is used by the generated code
 const getEnv = (key) => {
 	return getEnv$1(key);
+};
+
+const getSecret = (key) => {
+	return getEnv(key);
 };
 
 const _internalGetSecret = (key) => {
@@ -169,14 +173,14 @@ const _internalGetSecret = (key) => {
 };
 
 setOnSetGetEnv(() => {
-	RESEND_API_KEY = _internalGetSecret("RESEND_API_KEY");
-CONTACT_TO = _internalGetSecret("CONTACT_TO");
-CONTACT_FROM = _internalGetSecret("CONTACT_FROM");
+	_internalGetSecret("RESEND_API_KEY");
+_internalGetSecret("CONTACT_TO");
+_internalGetSecret("CONTACT_FROM");
 
 });
-let RESEND_API_KEY = _internalGetSecret("RESEND_API_KEY");
-let CONTACT_TO = _internalGetSecret("CONTACT_TO");
-let CONTACT_FROM = _internalGetSecret("CONTACT_FROM");
+_internalGetSecret("RESEND_API_KEY");
+_internalGetSecret("CONTACT_TO");
+_internalGetSecret("CONTACT_FROM");
 
 const prerender = false;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -203,6 +207,15 @@ const POST = async ({ request }) => {
   const message = typeof payload.message === "string" ? payload.message.trim() : "";
   if (name.length < 2 || !EMAIL_RE.test(email) || !PHONE_RE.test(phone) || message.length < 10) {
     return json({ ok: false, error: "validation" }, 400);
+  }
+  const RESEND_API_KEY = getSecret("RESEND_API_KEY");
+  const CONTACT_FROM = getSecret("CONTACT_FROM");
+  const CONTACT_TO = getSecret("CONTACT_TO");
+  if (!RESEND_API_KEY || !CONTACT_FROM || !CONTACT_TO) {
+    console.error(
+      "Configuração de email em falta: definir RESEND_API_KEY, CONTACT_FROM e CONTACT_TO no ambiente."
+    );
+    return json({ ok: false, error: "config" }, 500);
   }
   const resend = new Resend(RESEND_API_KEY);
   const safeName = name.replace(/[\r\n"\\<>]/g, "").trim();

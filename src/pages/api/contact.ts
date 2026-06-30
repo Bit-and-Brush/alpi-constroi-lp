@@ -1,4 +1,4 @@
-import { CONTACT_FROM, CONTACT_TO, RESEND_API_KEY } from "astro:env/server";
+import { getSecret } from "astro:env/server";
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
@@ -45,6 +45,21 @@ export const POST: APIRoute = async ({ request }) => {
     message.length < 10
   ) {
     return json({ ok: false, error: "validation" }, 400);
+  }
+
+  // Ler os segredos em runtime. getSecret devolve undefined (em vez de lançar)
+  // quando a variável não está definida no ambiente — ex.: esquecida no
+  // "Setup Node.js App" do cPanel. Assim respondemos de forma graciosa em vez
+  // de rebentar o módulo.
+  const RESEND_API_KEY = getSecret("RESEND_API_KEY");
+  const CONTACT_FROM = getSecret("CONTACT_FROM");
+  const CONTACT_TO = getSecret("CONTACT_TO");
+
+  if (!RESEND_API_KEY || !CONTACT_FROM || !CONTACT_TO) {
+    console.error(
+      "Configuração de email em falta: definir RESEND_API_KEY, CONTACT_FROM e CONTACT_TO no ambiente.",
+    );
+    return json({ ok: false, error: "config" }, 500);
   }
 
   const resend = new Resend(RESEND_API_KEY);

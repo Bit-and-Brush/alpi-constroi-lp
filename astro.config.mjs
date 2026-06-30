@@ -11,10 +11,25 @@ export default defineConfig({
   site: "https://alpiconstroi.com",
   adapter: node({ mode: "middleware" }),
   env: {
+    // optional: true para o endpoint poder tratar a ausência de forma graciosa.
+    // Sem isto, o astro:env valida os segredos de forma eager no load do módulo
+    // e lança AstroError se faltarem (ex.: esquecidos no Setup Node.js App).
     schema: {
-      RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),
-      CONTACT_TO: envField.string({ context: "server", access: "secret" }),
-      CONTACT_FROM: envField.string({ context: "server", access: "secret" }),
+      RESEND_API_KEY: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      CONTACT_TO: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
+      CONTACT_FROM: envField.string({
+        context: "server",
+        access: "secret",
+        optional: true,
+      }),
     },
   },
   i18n: {
