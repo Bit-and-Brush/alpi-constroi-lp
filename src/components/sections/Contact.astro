@@ -133,15 +133,6 @@ const t = useTranslations(lang);
   const feedback = document.getElementById("form-feedback") as HTMLElement;
   const d = form.dataset;
 
-  function sanitize(value: string): string {
-    return value
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#x27;");
-  }
-
   const mensagemEl = document.getElementById("mensagem") as HTMLTextAreaElement;
   const mensagemCount = document.getElementById("mensagem-count") as HTMLElement;
   mensagemEl.addEventListener("input", () => {
@@ -225,10 +216,10 @@ const t = useTranslations(lang);
     label.textContent = d.labelSubmitting!;
 
     const result = await submitContactForm({
-      name: sanitize(nome),
-      email: sanitize(email),
-      phone: sanitize(telefone),
-      message: sanitize(mensagem),
+      name: nome,
+      email: email,
+      phone: telefone,
+      message: mensagem,
     });
 
     btn.disabled = false;
