@@ -55,6 +55,12 @@ const t = useTranslations(lang);
         data-label-submit={t("contact.form.submit")}
         data-label-submitting={t("contact.form.submitting")}
       >
+        <!-- Honeypot anti-spam: invisível para humanos, ignorado na validação -->
+        <div class="absolute -left-[9999px]" aria-hidden="true">
+          <label for="website">Deixe este campo em branco</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
         <div class="flex flex-col gap-1">
           <label for="nome" class="text-sm font-bold text-foreground">{t("contact.form.name.label")}</label>
           <input
@@ -133,15 +139,6 @@ const t = useTranslations(lang);
   const feedback = document.getElementById("form-feedback") as HTMLElement;
   const d = form.dataset;
 
-  function sanitize(value: string): string {
-    return value
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#x27;");
-  }
-
   const mensagemEl = document.getElementById("mensagem") as HTMLTextAreaElement;
   const mensagemCount = document.getElementById("mensagem-count") as HTMLElement;
   mensagemEl.addEventListener("input", () => {
@@ -174,6 +171,7 @@ const t = useTranslations(lang);
     const email = (document.getElementById("email") as HTMLInputElement).value.trim();
     const telefone = (document.getElementById("telefone") as HTMLInputElement).value.trim();
     const mensagem = (document.getElementById("mensagem") as HTMLTextAreaElement).value.trim();
+    const website = (document.getElementById("website") as HTMLInputElement | null)?.value ?? "";
 
     if (!nome) {
       showError("nome-error", d.errNameRequired!);
@@ -225,10 +223,11 @@ const t = useTranslations(lang);
     label.textContent = d.labelSubmitting!;
 
     const result = await submitContactForm({
-      name: sanitize(nome),
-      email: sanitize(email),
-      phone: sanitize(telefone),
-      message: sanitize(mensagem),
+      name: nome,
+      email,
+      phone: telefone,
+      message: mensagem,
+      website,
     });
 
     btn.disabled = false;
