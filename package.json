@@ -16,12 +16,10 @@
     "check": "biome check ./src"
   },
   "dependencies": {
-    "@astrojs/node": "^10.1.4",
     "@astrojs/sitemap": "^3.7.3",
     "@fontsource/poppins": "^5.2.7",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.2",
-    "resend": "^6.16.0",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.3.0"
   },
