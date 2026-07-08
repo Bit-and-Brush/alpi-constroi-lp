@@ -1,46 +1,75 @@
-# Astro Starter Kit: Basics
+# Alpi Constroi Landing Page
 
-```sh
-pnpm create astro@latest -- --template basics
+A static landing page for Alpi Constroi built with [Astro](https://astro.build). Features a responsive design with multiple sections including hero, about, services, differentiators, and a contact form.
+
+## Features
+
+- **Static Site Generation** — Built with Astro for optimal performance
+- **Contact Form** — Integrates with [Resend](https://resend.com) for email delivery via a PHP endpoint
+- **Responsive Design** — Mobile-first approach with Tailwind CSS
+- **Multi-language Support** — Portuguese language picker included
+- **SEO Optimized** — Includes sitemap generation and meta tags
+
+## Quick Start
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Available Commands
 
-## 🚀 Project Structure
+| Command         | Description                                      |
+| :-------------- | :----------------------------------------------- |
+| `pnpm dev`      | Starts local dev server at `localhost:4321`      |
+| `pnpm build`    | Build production site to `./dist/`               |
+| `pnpm preview`  | Preview build locally, before deploying          |
+| `pnpm lint`     | Run Biome linter on `src/` directory             |
+| `pnpm format`   | Format code with Biome                           |
+| `pnpm check`    | Run Biome checks                                 |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── components/          # Reusable Astro components
+│   ├── Header.astro
+│   ├── Footer.astro
+│   ├── LanguagePicker.astro
+│   └── sections/        # Page section components
+│       ├── Hero.astro
+│       ├── About.astro
+│       ├── Services.astro
+│       ├── Differentiators.astro
+│       └── Contact.astro
+├── layouts/
+│   └── Layout.astro     # Main layout wrapper
+├── pages/
+│   └── index.astro      # Homepage
+└── assets/              # Images and static files
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Deployment
 
-## 🧞 Commands
+For deployment instructions to cPanel, including contact form configuration with Resend, see [DEPLOY.md](./DEPLOY.md).
 
-All commands are run from the root of the project, from a terminal:
+## Technologies
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+- [Astro](https://astro.build) — Static site builder
+- [Tailwind CSS](https://tailwindcss.com) — Utility-first CSS
+- [Resend](https://resend.com) — Email delivery API
+- [Biome](https://biomejs.dev) — Linter and formatter
 
-## 👀 Want to learn more?
+## Requirements
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Node.js >= 22.12.0
+- pnpm >= 11.9.0
