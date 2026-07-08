@@ -24,8 +24,7 @@ Gera `dist/`, incluindo `dist/api/contact.php`, `dist/api/config.example.php` e
 
 ## 3. Subir para o servidor
 
-Envie o conteúdo de `dist/` para `public_html/` (File Manager, FTP ou git pull — conforme o
-fluxo atual de versionar `dist/`).
+Envie o conteúdo de `dist/` para `public_html/` (File Manager, FTP ou git pull).
 
 ## 4. Configurar os segredos no servidor (uma vez)
 
@@ -41,7 +40,7 @@ return [
 ];
 ```
 
-- **Não commite** o `config.php` (já está no `.gitignore`).
+- **Não faça o commit** do `config.php` (já está no `.gitignore`).
 - Ele fica só no servidor e sobrevive a novos deploys (não vem do `dist/`).
 - Permissão recomendada: `644` (ou `600`).
 
