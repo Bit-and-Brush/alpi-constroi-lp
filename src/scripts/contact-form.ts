@@ -7,18 +7,31 @@ export interface ContactFormData {
   website?: string;
 }
 
-export async function submitContactForm(
-  data: ContactFormData
-): Promise<{ success: boolean; error?: string }> {
+export async function submitContactForm(data: ContactFormData): Promise<{
+  success: boolean;
+  error?: string;
+  details?: Record<string, unknown>;
+}> {
   try {
     const res = await fetch("/api/contact.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    if (!res.ok) throw new Error();
-    return { success: true };
+    if (res.ok) {
+      return { success: true };
+    }
+    try {
+      const details = await res.json();
+      return {
+        success: false,
+        error: details.error ?? "Erro ao enviar mensagem",
+        details,
+      };
+    } catch {
+      return { success: false, error: "Erro ao enviar mensagem" };
+    }
   } catch {
-    return { success: false };
+    return { success: false, error: "Erro ao enviar mensagem" };
   }
 }
