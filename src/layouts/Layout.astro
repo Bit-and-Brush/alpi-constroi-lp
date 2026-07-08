@@ -1,5 +1,6 @@
 ---
 import { Font } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import type { Lang } from "../i18n/ui";
@@ -11,6 +12,11 @@ const t = useTranslations(lang);
 const htmlLang = lang === "pt" ? "pt-AO" : "en";
 const ogLocale = lang === "pt" ? "pt_AO" : "en_US";
 const ogImageUrl = new URL("/android-chrome-512x512.png", Astro.site).href;
+
+const pathname = Astro.url.pathname;
+const basePath = pathname.replace(/^\/en(?:\/|$)/, "/");
+const ptUrl = new URL(getRelativeLocaleUrl("pt", basePath), Astro.site).href;
+const enUrl = new URL(getRelativeLocaleUrl("en", basePath), Astro.site).href;
 ---
 
 <!doctype html>
@@ -31,10 +37,15 @@ const ogImageUrl = new URL("/android-chrome-512x512.png", Astro.site).href;
     <meta name="twitter:title" content={t("layout.title")} />
     <meta name="twitter:description" content={t("layout.og.description")} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <link rel="canonical" href={Astro.url.href} />
+    <link rel="alternate" hreflang="pt" href={ptUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site).href} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest" />
     <Font cssVariable="--font-primary" />
     <title>{t("layout.title")}</title>
   </head>

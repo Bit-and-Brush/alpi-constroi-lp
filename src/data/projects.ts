@@ -1,7 +1,7 @@
+import type { ImageMetadata } from "astro";
 import ProjectOneImage from "@/assets/img/projects/project-1.webp";
 import ProjectTwoImage from "@/assets/img/projects/project-2.webp";
 import ProjectThreeImage from "@/assets/img/projects/project-3.webp";
-import type { ImageMetadata } from "astro";
 
 export interface Project {
   title: string;

@@ -91,9 +91,10 @@ const t = useTranslations(lang);
             id="nome"
             name="nome"
             placeholder={t("contact.form.name.placeholder")}
+            aria-describedby="nome-error"
             class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
           />
-          <span id="nome-error" class="text-red-500 text-xs hidden"></span>
+          <span id="nome-error" class="text-red-500 text-xs hidden" role="alert"></span>
         </div>
 
         <div class="flex flex-col gap-1">
@@ -105,9 +106,10 @@ const t = useTranslations(lang);
             id="email"
             name="email"
             placeholder="me@mail.com"
+            aria-describedby="email-error"
             class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
           />
-          <span id="email-error" class="text-red-500 text-xs hidden"></span>
+          <span id="email-error" class="text-red-500 text-xs hidden" role="alert"></span>
         </div>
 
         <div class="flex flex-col gap-1">
@@ -120,9 +122,10 @@ const t = useTranslations(lang);
             name="telefone"
             placeholder={t("contact.form.phone.placeholder")}
             maxlength="9"
+            aria-describedby="telefone-error"
             class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors"
           />
-          <span id="telefone-error" class="text-red-500 text-xs hidden"></span>
+          <span id="telefone-error" class="text-red-500 text-xs hidden" role="alert"></span>
         </div>
 
         <div class="flex flex-col gap-1">
@@ -135,10 +138,11 @@ const t = useTranslations(lang);
             rows="4"
             maxlength="300"
             placeholder={t("contact.form.message.placeholder")}
+            aria-describedby="mensagem-error"
             class="border border-gray-300 rounded-lg px-4 py-3 w-full text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-primary transition-colors resize-none"
           ></textarea>
           <div class="flex justify-between items-center">
-            <span id="mensagem-error" class="text-red-500 text-xs hidden"
+            <span id="mensagem-error" class="text-red-500 text-xs hidden" role="alert"
             ></span>
             <span id="mensagem-count" class="text-xs text-foreground/40 ml-auto"
               >0/300</span
@@ -146,7 +150,7 @@ const t = useTranslations(lang);
           </div>
         </div>
 
-        <span id="form-feedback" class="text-sm hidden"></span>
+        <span id="form-feedback" class="text-sm hidden" role="alert" aria-live="polite"></span>
 
         <button
           type="submit"
