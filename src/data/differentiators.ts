@@ -6,7 +6,7 @@ export const differentiators: Record<"pt" | "en", Differentiator[]> = {
   pt: [
     {
       description:
-        "Escolher a Alpiconstrói significa optar por preços competitivos sem comprometer a qualidade do serviço. Tornamos os nossos serviços acessíveis aos proprietários, oferecendo renovações completas.",
+        "Escolher a Alpiconstroi significa optar por preços competitivos sem comprometer a qualidade do serviço. Tornamos os nossos serviços acessíveis aos proprietários, oferecendo renovações completas.",
     },
     {
       description:
@@ -24,7 +24,7 @@ export const differentiators: Record<"pt" | "en", Differentiator[]> = {
   en: [
     {
       description:
-        "Choosing Alpiconstrói means opting for competitive prices without compromising service quality. We make our services accessible to property owners, offering complete renovations.",
+        "Choosing Alpiconstroi means opting for competitive prices without compromising service quality. We make our services accessible to property owners, offering complete renovations.",
     },
     {
       description:

@@ -31,9 +31,9 @@ export const ui = {
 
     // About
     "about.tag": "Quem Somos",
-    "about.title": "Bem-Vindo À Alpiconstrói, A Sua Parceira De Confiança",
+    "about.title": "Bem-Vindo À Alpiconstroi, A Sua Parceira De Confiança",
     "about.p1":
-      "Na Alpiconstrói transformamos visões em obra feita, com uma trajetória de sólida experiência e compromisso inabalável com a excelência desde 2007.",
+      "Na Alpiconstroi transformamos visões em obra feita, com uma trajetória de sólida experiência e compromisso inabalável com a excelência desde 2007.",
     "about.p2":
       "Somos movidos pela paixão de transformar projetos em realidade, entregando construções de alta qualidade, seguras e sustentáveis, no respeito pela vontade do cliente.",
     "about.p3":
@@ -60,7 +60,7 @@ export const ui = {
 
     // Differentiators
     "differentiators.tag": "O Que Nos Diferencia",
-    "differentiators.title": "Por Que Escolher A Alpiconstrói?",
+    "differentiators.title": "Por Que Escolher A Alpiconstroi?",
 
     // FAQ
     "faq.tag": "FAQ",
@@ -70,7 +70,7 @@ export const ui = {
     "contact.tag": "Contacte-Nos",
     "contact.title": "Fale Connosco",
     "contact.description":
-      "Se deseja iniciar um projecto de construção ou melhoria, ou precisa de assistência para uma obra, a nossa equipa de profissionais qualificados está pronta para tratar de tudo por si. Contacte a Alpiconstrói hoje e experiencie serviço de excelência.",
+      "Se deseja iniciar um projecto de construção ou melhoria, ou precisa de assistência para uma obra, a nossa equipa de profissionais qualificados está pronta para tratar de tudo por si. Contacte a Alpiconstroi hoje e experiencie serviço de excelência.",
     "contact.email.label": "EMAIL:",
     "contact.phone.label": "TELEFONE:",
     "contact.address.label": "MORADA:",
@@ -140,9 +140,9 @@ export const ui = {
 
     // About
     "about.tag": "Who We Are",
-    "about.title": "Welcome To Alpiconstrói, Your Trusted Partner",
+    "about.title": "Welcome To Alpiconstroi, Your Trusted Partner",
     "about.p1":
-      "At Alpiconstrói we turn visions into reality, with a track record of solid experience and unwavering commitment to excellence since 2007.",
+      "At Alpiconstroi we turn visions into reality, with a track record of solid experience and unwavering commitment to excellence since 2007.",
     "about.p2":
       "We are driven by the passion to transform projects into reality, delivering high-quality, safe and sustainable constructions, respecting the client's wishes.",
     "about.p3":
@@ -169,7 +169,7 @@ export const ui = {
 
     // Differentiators
     "differentiators.tag": "What Sets Us Apart",
-    "differentiators.title": "Why Choose Alpiconstrói?",
+    "differentiators.title": "Why Choose Alpiconstroi?",
 
     // FAQ
     "faq.tag": "FAQ",
@@ -179,7 +179,7 @@ export const ui = {
     "contact.tag": "Contact Us",
     "contact.title": "Get In Touch",
     "contact.description":
-      "If you want to start a construction or improvement project, or need assistance with a job, our team of qualified professionals is ready to take care of everything for you. Contact Alpiconstrói today and experience excellent service.",
+      "If you want to start a construction or improvement project, or need assistance with a job, our team of qualified professionals is ready to take care of everything for you. Contact Alpiconstroi today and experience excellent service.",
     "contact.email.label": "EMAIL:",
     "contact.phone.label": "PHONE:",
     "contact.address.label": "ADDRESS:",
